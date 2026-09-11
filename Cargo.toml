@@ -4,7 +4,17 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+volatile = "0.2.6" # tell the compiler not to optimize writing on VGA mem address
 bootloader = "0.9"
+spin = "0.5.2" #Provides spinlocks for safe shared mutable access.
+
+[lints.cargo]
+unused-dependencies = "allow"
+
+[dependencies.lazy_static]
+version = "1.0"
+features = ["spin_no_std"]
+
 
 [profile.dev]
 panic = "abort"
